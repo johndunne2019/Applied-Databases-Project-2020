@@ -1,0 +1,1 @@
+db.docs.aggregate([{$match:{"details.name":{$exists:true}}},{$project: {_id:0, "details.name":1, qualifications: {$ifNull:["$qualifications", "None"]}}}, {$sort:{"details.name":1}}])

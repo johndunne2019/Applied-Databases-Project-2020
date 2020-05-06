@@ -1,0 +1,12 @@
+SELECT p.personname, c.name,
+CASE
+WHEN (datediff(dateleft, datearrived)) < 20 then "Short"
+WHEN (datediff(dateleft, datearrived)) between 20 and 99 then "Long"
+WHEN (datediff(dateleft, datearrived)) > 99 then "Very Long"
+END AS "Stay Length"
+FROM person p
+INNER JOIN hasvisitedcity hv
+ON p.personID = hv.personID
+INNER JOIN city c
+ON hv.cityID = c.ID
+ORDER BY p.personname ASC, c.name ASC;

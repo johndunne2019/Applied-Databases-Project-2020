@@ -1,0 +1,9 @@
+SELECT cty.Name as name, ctry.Name as name, cl.Language as language, cl.Percentage as percentage
+FROM city cty
+INNER JOIN country ctry
+ON cty.ID = ctry.Capital
+INNER JOIN countrylanguage cl 
+ON ctry.Code = cl.CountryCode
+WHERE cl.IsOfficial = "T"
+AND ctry.Continent = "North America"
+ORDER BY cty.Name ASC, ctry.Name ASC, cl.Language ASC, cl.Percentage ASC;
